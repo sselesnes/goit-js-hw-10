@@ -39,80 +39,52 @@ ul {
   padding: 0;
   list-style: none;
 }
-.gallery {
-  max-width: 1128px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 24px 24px;
-}
-.gallery-item {
-  height: 200px;
-  transition: transform 150ms ease-in;
-}
-.gallery-item:hover {
-  transform: scale(1.04);
-  transition: transform 150ms ease-in;
-}
-.gallery-image {
-  width: 360px;
-  height: 200px;
-  object-fit: cover;
-  transition: transform 250ms ease-in;
-}
-.feedback-form {
-  display: flex;
-  flex-direction: column;
-  row-gap: 16px;
-  padding: 24px;
-  max-width: 408px;
-}
 button {
   height: 40px;
   border: none;
   border-radius: 8px;
-  background: #4e75ff;
-  color: #fff;
+  background: #cfcfcf;
+  color: #989898;
   padding: 8px 16px;
-  max-width: 95px;
+  max-width: 75px;
 }
-input,
-textarea {
-  display: flex;
-  align-items: center;
+input {
   height: 40px;
-  width: 100%;
+  background-color: #fafafa;
   border-radius: 4px;
   border: 1px solid #808080;
   padding: 8px 16px;
-  margin-top: 8px;
 }
-textarea {
-  height: 80px;
-}
-input:focus-visible,
-textarea:focus-visible {
+input:focus-visible {
   border: 1px solid #808080;
   outline: none;
 }
-input:hover,
-textarea:hover {
+input:hover {
   border: 1px solid #000;
 }
 input,
-input::placeholder,
-textarea,
-textarea::placeholder {
-  color: #2e2f42;
+input::placeholder {
+  color: #808080;
 }
-@media (pointer: fine) {
-  button:hover {
-    background: #6c8cff;
-  }
+
+#datetime-picker {
+  margin-right: 8px;
+  width: 272px;
 }
-@media (pointer: coarse) {
-  button:active {
-    background: #6c8cff;
-  }
+.timer {
+  margin-top: 32px;
+  max-width: 346px;
+  display: flex;
+  text-align: center;
+  column-gap: 24px;
+}
+.value {
+  font-size: 40px;
+  font-weight: 400;
+}
+.label {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0%;
+  text-transform: uppercase;
 }
