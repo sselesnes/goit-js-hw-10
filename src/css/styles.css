@@ -11,6 +11,9 @@ body {
   font-weight: 400;
   letter-spacing: 0.04em;
 }
+a {
+  text-decoration: none;
+}
 button,
 input,
 textarea {
@@ -67,10 +70,6 @@ input::placeholder {
   color: #808080;
 }
 
-#datetime-picker {
-  margin-right: 8px;
-  width: 272px;
-}
 .timer {
   margin-top: 32px;
   max-width: 346px;
@@ -87,4 +86,12 @@ input::placeholder {
   font-weight: 400;
   letter-spacing: 0%;
   text-transform: uppercase;
+}
+.flatpickr-input,
+.flatpickr-mobile {
+  margin-right: 8px;
+  width: 272px;
+}
+button:disabled {
+  cursor: not-allowed;
 }
