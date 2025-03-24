@@ -101,7 +101,7 @@ button:disabled {
   flex-direction: column;
   max-width: 360px;
 }
-.form > label input {
+.form input[name='delay'] {
   margin-top: 8px;
   width: 100%;
 }
