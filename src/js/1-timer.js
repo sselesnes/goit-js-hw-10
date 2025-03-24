@@ -5,10 +5,12 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const dateTimeInput = document.querySelector('input#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
-const counterDays = document.querySelector('[data-days]');
-const counterHours = document.querySelector('[data-hours]');
-const counterMinutes = document.querySelector('[data-minutes]');
-const counterSeconds = document.querySelector('[data-seconds]');
+const counters = {
+  days: document.querySelector('[data-days]'),
+  hours: document.querySelector('[data-hours]'),
+  minutes: document.querySelector('[data-minutes]'),
+  seconds: document.querySelector('[data-seconds]'),
+};
 
 let userSelectedDate;
 let timerInterval;
@@ -94,10 +96,11 @@ const startTimer = () => {
 };
 
 const updateTimerDisplay = ({ days, hours, minutes, seconds }) => {
-  counterDays.textContent = String(days).padStart(2, '0');
-  counterHours.textContent = String(hours).padStart(2, '0');
-  counterMinutes.textContent = String(minutes).padStart(2, '0');
-  counterSeconds.textContent = String(seconds).padStart(2, '0');
+  for (const key in counters) {
+    counters[key].textContent = String(
+      { days, hours, minutes, seconds }[key]
+    ).padStart(2, '0');
+  }
 };
 
 const convertMs = ms => {
