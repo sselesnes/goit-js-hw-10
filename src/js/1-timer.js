@@ -14,11 +14,13 @@ let userSelectedDate;
 let timerInterval;
 
 const startBtnHighlight = isHovered => {
-  if (startBtn.disabled) {
+  if (isHovered === undefined) {
+    startBtn.disabled = true;
     startBtn.style.color = `#989898`;
     startBtn.style.backgroundColor = `#cfcfcf`;
     return;
   }
+  startBtn.disabled = false;
   if (isHovered) {
     startBtn.style.color = `#ffffff`;
     startBtn.style.backgroundColor = `#6C8CFF`;
@@ -29,16 +31,17 @@ const startBtnHighlight = isHovered => {
 };
 
 const startBtnListen = () => {
-  startBtn.disabled = true;
   const events = ['pointerover', 'pointerout', 'click'];
   events.forEach(eventType => {
     startBtn.addEventListener(eventType, event => {
-      if (event.type === 'click' && !startBtn.disabled) {
-        startTimer();
-      } else if (event.type === 'pointerover') {
-        startBtnHighlight(true);
-      } else if (event.type === 'pointerout') {
-        startBtnHighlight(false);
+      if (!startBtn.disabled) {
+        if (event.type === 'click') {
+          startTimer();
+        } else if (event.type === 'pointerover') {
+          startBtnHighlight(true);
+        } else if (event.type === 'pointerout') {
+          startBtnHighlight(false);
+        }
       }
     });
   });
@@ -52,9 +55,8 @@ flatpickr(dateTimeInput, {
   onChange(selectedDates) {
     userSelectedDate = selectedDates[0];
     if (userSelectedDate < new Date()) {
-      startBtn.disabled = true;
-      startBtnHighlight(false);
-      iziToast.warning({
+      startBtnHighlight();
+      iziToast.error({
         theme: 'dark',
         backgroundColor: '#EF4040',
         progressBarColor: '#B51B1B',
@@ -62,7 +64,6 @@ flatpickr(dateTimeInput, {
         position: 'topRight',
       });
     } else {
-      startBtn.disabled = false;
       startBtnHighlight(false);
     }
   },
@@ -70,7 +71,7 @@ flatpickr(dateTimeInput, {
 
 const startTimer = () => {
   if (userSelectedDate > new Date()) {
-    startBtn.disabled = true;
+    startBtnHighlight();
     dateTimeInput.disabled = true;
     timerInterval = setInterval(() => {
       const now = new Date();
@@ -111,4 +112,5 @@ const convertMs = ms => {
   return { days, hours, minutes, seconds };
 };
 
+startBtnHighlight();
 startBtnListen();
