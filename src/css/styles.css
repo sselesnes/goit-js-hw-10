@@ -101,18 +101,14 @@ button:disabled {
   flex-direction: column;
   max-width: 360px;
 }
-.form > fieldset {
-  margin: 0;
-  height: auto;
-  width: 100%;
-}
-.form > label > input {
+.form > label input {
   margin-top: 8px;
   width: 100%;
 }
 .form fieldset {
-  margin-top: 16px;
+  margin: 16px 0 0;
   display: flex;
+  height: auto;
   justify-content: center;
   column-gap: 48px;
 }
@@ -121,19 +117,19 @@ button:disabled {
   align-items: center;
   column-gap: 8px;
 }
-.form fieldset + button {
+.form button[type='submit'] {
   margin-top: 24px;
   background: #4e75ff;
   color: #fff;
 }
 
 @media (pointer: fine) {
-  .form fieldset + button:hover {
+  .form button[type='submit']:hover {
     background: #6c8cff;
   }
 }
 @media (pointer: coarse) {
-  .form fieldset + button:active {
+  .form button[type='submit']:active {
     background: #6c8cff;
   }
 }
