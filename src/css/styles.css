@@ -70,7 +70,6 @@ input,
 input::placeholder {
   color: #000;
 }
-
 .timer {
   margin-top: 32px;
   max-width: 346px;
@@ -90,12 +89,14 @@ input::placeholder {
 }
 .flatpickr-input,
 .flatpickr-mobile {
-  margin-right: 8px;
-  width: 272px;
+  margin-right: 4px;
+  width: calc(100vw - 132px);
+  max-width: 272px;
 }
 button:disabled {
   cursor: not-allowed;
 }
+
 .form {
   display: flex;
   flex-direction: column;
